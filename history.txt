@@ -1,0 +1,41 @@
+Changelog
+=========
+
+1.3 (2012-10-03)
+----------------
+
+- updated redomino.css3theme 1.5.8 [sithmel]
+- updated redomino.flowsearch 0.11 [sithmel]
+- added a recipe changing the ownership of
+  src and eggs (useful for compiling .mo) [sithmel]
+
+
+1.3beta7 (2012-09-17)
+---------------------
+
+- updated redomino.css3theme 1.5.7 [sithmel]
+- updated redomino.advancedkeyword 1.3 [sithmel]
+- updated dependencies to Plone 4.1.6 [sithmel]
+- tag ploomcake.core 1.4 [sithmel]
+- tag ploomcake.installer 0.8 [sithmel]
+
+1.3beta6 (2012-07-27)
+---------------------
+
+- updated redomino.css3theme 1.5.4 [sithmel]
+- fix static portlet updating tinymce to 1.2.12
+  (this is already fixed in plone 4.1.6) [sithmel]
+
+1.3beta5 (2012-07-20)
+---------------------
+
+- updated breadcrumbsbrain 0.4 [sithmel]
+- updated redomino.tabsandslides 0.8.4 [sithmel]
+- updated redomino.flowsearch to 0.10 [sithmel]
+- added redomino.protectdelete 0.3 [sithmel]
+- updated tokenrole to 0.8 [sithmel]
+
+1.3beta4 (2012-07-16)
+---------------------
+
+- Products update [sithmel]
