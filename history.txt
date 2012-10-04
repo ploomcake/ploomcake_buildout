@@ -1,9 +1,10 @@
 Changelog
 =========
 
-1.3 (2012-10-03)
+1.3 (2012-10-04)
 ----------------
 
+- updated ploomcake.core 1.6 [sithmel]
 - updated redomino.css3theme 1.5.8 [sithmel]
 - updated redomino.flowsearch 0.11 [sithmel]
 - added a recipe changing the ownership of
