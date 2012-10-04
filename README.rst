@@ -4,7 +4,11 @@ This is the buildout folder of Ploomcake, which extends the standard Plone build
 
 What is Ploomcake
 =================
-Ploomcake is a CMS that extends Plone (http://plone.org) with a lot of useful features.
+
+Ploomcake is a distribution of the powerful open source Plone CMS (http://plone.org) that lets you create an out-of-the-box website or intranet.
+It automatically includes in your portal a selection of the best third-party open source plugins: mobile support with responsive theme, easy forms generation support, tabs and slideshows goodies, multilanguage support, and much more.
+Before you go on you should know that it is also available a pre packaged unified installer. Go and get it on the official web site (coming soon).
+If you are an expert user (or a developer) you can go on following this guide.
 
 How to install
 ==============
@@ -12,7 +16,7 @@ How to install
 Prepare the Plone buildout
 --------------------------
 Install Plone 4.1.6 using Unified installer. You can get it on plone.org (http://plone.org/products/plone/releases/4.1.6).
-Rename the buildout.cfg of the Plone instance as "configuration.cfg". This step is very important because the Ploomcake buildout will extend this file.
+After the installation rename the buildout.cfg of the Plone instance folder as "configuration.cfg". This step is very important because the Ploomcake buildout will extend this file.
 
 Check out this folder
 ---------------------
@@ -47,7 +51,7 @@ Extending this buildout (developers)
 ====================================
 The cleanest way to extend this buildout is to create another folder like this in the buildout. We have prepared a precompiled folder called "extend_config.d".
 In this folder you can customize and extend the buildout configuration. In particular this buildout inherits the project.cfg.
-To use the new extended buildout you have to copy the start_devel.cfg start_production.cfg in the instance directory and relaunch the buildout using one of these files.
+To use the new extended buildout you have to copy the start_devel.cfg or start_production.cfg in the instance directory and relaunch the buildout using one of these files.
 You can rename the file you choose as buildout.cfg and relaunch bin/buildout
 
 License
