@@ -29,12 +29,19 @@ Substitute the folder c:\Plone41\docs with the docs on this directory.
 Substitute installer.cfg with the file in this directory.
 Copy ploomcake.html in the c:\Plone41 directory
 Remove Ep7.html in c:\Plone41
-Remove the version pin of distribute in buildout.cfg
+Remove the version pin of distribute in configuration.cfg
 
 
 Step 4: Build the installer
 ---------------------------
-launch bin\buildout.exe -c installer.cfg
+launch::
+
+    bin\buildout.exe -c installer.cfg
+
+and::
+
+    bin\installer.exe
+
 If everything is ok, after a while, the installer will be in c:\plone41\build.
 
 Troubleshooting
