@@ -38,6 +38,7 @@ Substitute the folder c:\Plone41\docs with the docs on this directory.
 Substitute installer.cfg with the file in this directory.
 Copy ploomcake.html in the c:\Plone41 directory
 Remove Ep7.html in c:\Plone41
+change the version number inside the "version" file
 check the version of distribute inside bin\buildout-script.py and fix the pin
 inside configuration.cfg
 
