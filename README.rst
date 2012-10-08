@@ -7,7 +7,7 @@ What is Ploomcake
 
 Ploomcake is a distribution of the powerful open source Plone CMS (http://plone.org) that lets you create an out-of-the-box website or intranet.
 It automatically includes in your portal a selection of the best third-party open source plugins: mobile support with responsive theme, easy forms generation support, tabs and slideshows goodies, multilanguage support, and much more.
-Before you go on you should know that it is also available a pre packaged unified installer. Go and get it on the official web site (coming soon).
+Before you go on you should know that it is also available a pre packaged unified installer. Go and get it on the official web site (http://www.ploomcake.org).
 If you are an expert user (or a developer) you can go on following this guide.
 
 How to install
