@@ -9,6 +9,8 @@ the right order otherwise you'll find youself bogged down debugging !
 
 Step 1: installer prerequisites
 -------------------------------
+- Install gettext for windows 
+  http://gnuwin32.sourceforge.net/packages/gettext.htm
 - Install subversion for windows
 - Install GIT for windows http://code.google.com/p/msysgit
 - Install Microsoft Windows SDKs v7.1:
@@ -31,6 +33,7 @@ Step 2: Install Ploomcake manually
 - rename start_windows.cfg as buildout.cfg
 - launch bin\buildout.exe
 - comment out the row with "sources.cfg" in config.d/project.cfg
+- restart the ploomcake instance. It should compile the translations files (.mo)
 
 Step 3: installer setup
 -----------------------

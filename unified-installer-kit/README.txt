@@ -18,7 +18,8 @@ Step 0 Prerequisites:
 
 Step 1 Update the eggs:
 -----------------------
-
+    - go to /${plone folder}/zinstance and launch bin/instance fg.
+      This is useful to build the translations files (.mo)
     - go to /${plone folder}/zinstance/config.d/unified-installer-kit and
       run python update_packages.py /${plone folder}
       for example:
