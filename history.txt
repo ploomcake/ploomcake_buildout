@@ -8,6 +8,7 @@ Changelog
   [sithmel]
 - fix Javascript bug on ie8 (updated kss.core) [sithmel]
 - updated windows unified installer doc [sithmel]
+- updated redomino.flowsearch to 0.12 [sithmel]
 
 1.3 (2012-10-04)
 ----------------
