@@ -30,6 +30,7 @@ Step 2: Install Ploomcake manually
 - Copy the config.d directory in c:\Plone41
 - Copy start_windows.cfg in c:\Plone41
 - rename buildout.cfg as configuration.cfg
+- fix windows services names in configuration.cfg
 - rename start_windows.cfg as buildout.cfg
 - launch bin\buildout.exe
 - comment out the row with "sources.cfg" in config.d/project.cfg
