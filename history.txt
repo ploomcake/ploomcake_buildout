@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.3.1dev (2012-10-19)
+1.3.1dev (unreleased)
 ---------------------
 
 - added documentation for translating .mo during the unified installer setup
   [sithmel]
+- fix Javascript bug on ie8 (updated kss.core) [sithmel]
 
 1.3 (2012-10-04)
 ----------------
