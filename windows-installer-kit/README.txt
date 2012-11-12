@@ -9,8 +9,7 @@ the right order otherwise you'll find youself bogged down debugging !
 
 Step 1: installer prerequisites
 -------------------------------
-- Install gettext for windows 
-  http://gnuwin32.sourceforge.net/packages/gettext.htm
+- Install poedit
 - Install subversion for windows
 - Install GIT for windows http://code.google.com/p/msysgit
 - Install Microsoft Windows SDKs v7.1:
@@ -23,6 +22,7 @@ Be sure that these paths are added to your "path" environment var:
     C:\Program Files\Subversion\bin
     C:\Program Files\Inno Setup 5
     C:\Program Files\git (this is automatic)
+    C:\Program Files (x86)\Poedit\bin\
 
 Step 2: Install Ploomcake manually
 ----------------------------------
@@ -34,7 +34,7 @@ Step 2: Install Ploomcake manually
 - rename start_windows.cfg as buildout.cfg
 - launch bin\buildout.exe
 - comment out the row with "sources.cfg" in config.d/project.cfg
-- restart the ploomcake instance. It should compile the translations files (.mo)
+- use compilemo script to compile all .po
 
 Step 3: installer setup
 -----------------------

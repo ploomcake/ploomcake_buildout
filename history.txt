@@ -4,13 +4,14 @@ Changelog
 1.3.1dev (unreleased)
 ---------------------
 
-- added documentation for translating .mo during the unified installer setup
-  [sithmel]
+- added documentation and an utility script for translating .mo during the
+  unified installer setup [sithmel]
 - fix Javascript bug on ie8 (updated kss.core) [sithmel]
 - updated windows unified installer doc [sithmel]
-- updated redomino.flowsearch to 0.13 [sithmel]
-- updated ploomcake.installer to 0.11 [sithmel]
-- updated ploomcake.core to 1.7 [sithmel]
+- updated redomino.flowsearch from 0.11 to 0.13 [sithmel]
+- updated ploomcake.installer from 0.9 to 0.11 [sithmel]
+- updated ploomcake.core from 1.6 to 1.7 [sithmel]
+- applied security patch Products.PloneHotfix20121106 [sithmel]
 
 1.3 (2012-10-04)
 ----------------
