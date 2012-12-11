@@ -20,9 +20,9 @@ or
 
 LOCALDIR = '${buildout:directory}'
 
-SNAPSHOTCOMMAND = '${snapshot-command}'
-RESTORECOMMAND = '${restore-command}'
-SNAPSHOTDIR = '${snapshot-dir}'
+SNAPSHOTCOMMAND = '${buildout:snapshot-command}'
+RESTORECOMMAND = '${buildout:restore-command}'
+SNAPSHOTDIR = '${buildout:snapshot-dir}'
 
 def call(cmd):
     """launch a command"""
