@@ -12,6 +12,7 @@ Changelog
 - updated ploomcake.installer from 0.9 to 0.11 [sithmel]
 - updated ploomcake.core from 1.6 to 1.7 [sithmel]
 - applied security patch Products.PloneHotfix20121106 [sithmel]
+- added syncd. A useful command to sync data between instances [sithmel]
 
 1.3 (2012-10-04)
 ----------------
