@@ -1,0 +1,164 @@
+#!${buildout:executable}
+import os
+import os.path
+import shutil
+import sys
+import subprocess
+from optparse import OptionParser
+import pwd
+
+usage = """
+Import data from a local or remote instance
+#########################################################
+WARNING:
+THIS COMMAND WILL OVERWRITE YOUR CURRENT DATA !!! BE CAREFUL
+
+ALSO, CHECK IF YOU HAVE ENOUGH DISK SPACE IN EITHER
+REMOTE AND CURRENT INSTANCE
+#########################################################
+    %prog instance_path
+or
+    %prog -r user@machine instance_path"""
+
+LOCALDIR = '${buildout:directory}'
+DATAFS_PATH = """${datafs}""".strip()
+BLOBS_PATH = """${blobs}""".strip() 
+EFFECTIVE_USER = '${buildout:effective-user}'
+
+DATAFS_PATH = DATAFS_PATH and DATAFS_PATH.split('\n') or ['var/filestorage/Data.fs']
+BLOBS_PATH = BLOBS_PATH and BLOBS_PATH.split('\n') or ['var/blobstorage']
+
+rsync_command = ['rsync', '-vzr', '--delete', '--progress']
+
+def call(cmd):
+    """launch a command"""
+    try:
+        if subprocess.call(cmd) != 0:
+            print "Something goes wrong. Check the output"
+            exit(1)
+    except OSError:
+        exctype, value = sys.exc_info()[:2]
+        print "Error with this command: %s" % (' '.join(cmd))
+        print "Error: %s" % value
+        exit(1)
+
+def banner(s):
+    """print a big banner"""
+    print '#' * (len(s) + 2)
+    print '# %s' % s
+    print '#' * (len(s) + 2)
+
+
+def recursive_chown(path, user):
+    user = pwd.getpwnam(user)
+    uid = user.pw_uid
+    gid = user.pw_gid
+    if os.path.isfile(path):
+        os.chown(path, uid, gid)
+    if os.path.isdir(path):
+        for root, dirs, files in os.walk(path):
+            for item in dirs + files:
+                os.chown(os.path.join(root, item), uid, gid)
+
+if __name__ == "__main__":
+    parser = OptionParser(usage=usage)
+
+    parser.add_option("-r", "--remote",
+                      action="store", type="string", dest="remote", default='',
+                      help="Sync from a remote instance using ssh")
+
+    (options, args) = parser.parse_args()
+
+    if len(args) != 1:
+        parser.error("The instance path is required")
+
+    instancepath = os.path.abspath(args[0])
+
+    local_datafs = [os.path.join(LOCALDIR, p) for p in DATAFS_PATH]
+    remote_datafs = [os.path.join(instancepath, p) for p in DATAFS_PATH]
+
+    local_blobs = [os.path.join(LOCALDIR, p) for p in BLOBS_PATH]
+    remote_blobs = [os.path.join(instancepath, p) for p in BLOBS_PATH]
+
+    cmd_remote = os.path.join(instancepath, 'bin', 'repozo')
+    cmd_local = os.path.join(LOCALDIR, 'bin', 'repozo')
+
+    banner('launch snapshots on the remote instance')
+
+    commands = []
+    for path in remote_datafs:
+        backupdir = path + '.snapshot'
+        commands.append(['rm', '-rf', backupdir])
+        commands.append(['mkdir', backupdir])
+        # repozo options        
+        #-v verbose
+        #-B backup
+        #-z gzip on
+        #-Q quick (no md5 chack)
+        #-F full
+        commands.append([cmd_remote, '-BzfQ', '-r', backupdir, '-f', path])
+
+    if options.remote:
+        call(['ssh','-t', options.remote, ' ; '.join([' '.join(c) for c in commands])])
+    else:
+        for c in commands:
+            call(c)
+
+    commands = []
+    for path in local_datafs:
+        backupdir = path + '.snapshot'
+        commands.append(['rm', '-rf', backupdir])
+        commands.append(['mkdir', backupdir])
+    for c in commands:
+        call(c)
+
+    banner('copy snapshots on the local instance')
+
+    for localpath, remotepath in zip(local_datafs, remote_datafs):
+        localbackupdir = localpath + '.snapshot'
+        remotebackupdir = remotepath + '.snapshot'
+        
+        cmd = rsync_command[:]
+   
+        if options.remote:
+            cmd.append('%s:%s/' % (options.remote, remotebackupdir ))
+        else:
+            cmd.append('%s/' % remotebackupdir)
+
+        cmd.append(localbackupdir)
+
+        call(cmd)
+
+    banner('restore snapshots to the local instance')
+
+    commands = []
+
+    for path in local_datafs:
+        backupdir = path + '.snapshot'
+        # repozo options        
+        #-v verbose
+        #-R restore
+        call([cmd_local, '-R', '-r', backupdir, '-o', path])
+        call(['rm', '-rf', backupdir])
+        recursive_chown(path, EFFECTIVE_USER)
+
+    banner('copy blobs')
+
+    for localpath, remotepath in zip(local_blobs, remote_blobs):
+        
+        cmd = rsync_command[:]
+   
+        if options.remote:
+            cmd.append('%s:%s/' % (options.remote, remotepath ))
+        else:
+            cmd.append('%s/' % remotepath)
+
+        cmd.append(localpath)
+
+        call(cmd)
+        recursive_chown(localpath, EFFECTIVE_USER)
+
+    banner('Done !!!')
+
+
+
