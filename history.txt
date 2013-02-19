@@ -12,6 +12,8 @@ Changelog
   (giacomos patches have been merged) [sithmel]
 - returned to the upstream release of Products.ContentWellPortlets
   (our patches have been merged) [sithmel]
+- updated ploomcake.core to 1.8 [sithmel]
+- updated ploomcake.theme to 1.9 [sithmel]
 
 1.3.1dev (unreleased)
 ---------------------
