@@ -4,13 +4,14 @@ Changelog
 1.4.0dev (unreleased)
 ---------------------
 
+- added ploomcake.vanilla [sithmel]
 - added redomino.redirectparent [sithmel]
 - updated redomino.css3theme from 1.5.8 to 1.5.10 [sithmel]
-- updated redomino.tabsandslides from 0.8.4 to 0.9.10 [sithmel]
+- updated redomino.tabsandslides from 0.8.4 to 0.9.11 [sithmel]
 - plone 4.2.4 compatibility [sithmel]
 - returned to the upstream release of PloneFormGen (1.7.6)
   (giacomos patches have been merged) [sithmel]
-- returned to the upstream release of Products.ContentWellPortlets
+- returned to the upstream release of Products.ContentWellPortlets (4.2.1)
   (our patches have been merged) [sithmel]
 - updated ploomcake.core to 1.8 [sithmel]
 - updated ploomcake.theme to 1.9 [sithmel]
